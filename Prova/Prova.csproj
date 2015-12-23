@@ -80,7 +80,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Source\Repos\ExtendCSharp\ExtendCSharp\ExtendCSharp\ExtendCSharp.csproj">
+    <ProjectReference Include="..\..\ExtendCSharp\ExtendCSharp\ExtendCSharp\ExtendCSharp.csproj">
       <Project>{9199318b-0f63-4faf-a0f1-823ef0072eea}</Project>
       <Name>ExtendCSharp</Name>
     </ProjectReference>
