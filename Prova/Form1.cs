@@ -21,10 +21,11 @@ namespace DottorWhy
         Domanda DomandaCorrente
         {
             get { return _DomandaCorrente; }
-            set {
+            set
+            {
                 _DomandaCorrente = value;
                 textBox2.Text = _DomandaCorrente.Testo + "\r\n\r\n";
-                foreach(KeyValuePair<Pulsante, String> k in _DomandaCorrente.ListaRisp)
+                foreach (KeyValuePair<Pulsante, String> k in _DomandaCorrente.ListaRisp)
                     textBox2.Text += k.Key + " - " + k.Value + "\r\n";
 
                 SettaGiocatoriAttivi(true);
@@ -39,16 +40,13 @@ namespace DottorWhy
         {
             InitializeComponent();
 
-
         }
 
-
-      
 
         private void Form1_Load(object sender, EventArgs e)
         {
             Dictionary<Keys, Pulsante> t = new Dictionary<Keys, Pulsante>();
-            t.Add(Keys.NumPad0,Pulsante.X);
+            t.Add(Keys.NumPad0, Pulsante.X);
             t.Add(Keys.NumPad1, Pulsante.Q);
             t.Add(Keys.NumPad2, Pulsante.T);
             t.Add(Keys.NumPad3, Pulsante.C);
@@ -104,14 +102,14 @@ namespace DottorWhy
 
 
             List<Control> l = this.GetControl(true);
-            foreach( Control c in l )
+            foreach (Control c in l)
             {
                 c.KeyDown += KeyDownEvent;
             }
 
 
 
-            Domanda d = new Domanda();
+            /*Domanda d = new Domanda();
             d.Testo = "sei frocio?";
             Dictionary<Pulsante, String> dd = new Dictionary<Pulsante, string>();
             dd.Add(Pulsante.X, "Si");
@@ -123,36 +121,36 @@ namespace DottorWhy
 
             Domande.Add(d);
             Domande.Add(d);
-            DomandaCorrente = d;
+            DomandaCorrente = d;*/
 
-            /*foreach(String s in File.ReadLines("pippo.txt"))
+            foreach (String s in File.ReadLines("Domande.txt"))
             {
                 Domande.Add(Json.Deserialize<Domanda>(s));
-            }*/
+            }
 
-            /* using (FileStream s = File.OpenWrite("pippo.txt"))
-            {
-                using (StreamWriter sw = new StreamWriter(s))
-                {
-                    sw.WriteLine(Json.Serialize(Domande));
-                }
-            }*/
+            /* using (FileStream s = File.OpenWrite("Domande.txt"))
+             {
+                 using (StreamWriter sw = new StreamWriter(s))
+                 {
+                     sw.WriteLine(Json.Serialize(Domande));
+                 }
+             }*/
 
-            Domande=Json.Deserialize<List<Domanda>>(File.ReadAllText("pippo.txt"));
+            // Domande=Json.Deserialize<List<Domanda>>(File.ReadAllText("Domande.txt"));
 
-            
+
         }
 
-       
+
 
 
         private void KeyDownEvent(object sender, KeyEventArgs e)
         {
-            foreach(KeyValuePair<Giocatore, Dictionary<Keys, Pulsante>> coppia in Giocatori)
+            foreach (KeyValuePair<Giocatore, Dictionary<Keys, Pulsante>> coppia in Giocatori)
             {
-                if (coppia.Key.attivo &&  coppia.Value.ContainsKey(e.KeyCode))
+                if (coppia.Key.attivo && coppia.Value.ContainsKey(e.KeyCode))
                 {
-                    textBox1.Text += coppia.Key+" ";
+                    textBox1.Text += coppia.Key + " ";
                     textBox1.Text += coppia.Value[e.KeyCode] + "\r\n";
                     textBox1.SelectionStart = textBox1.Text.Length;
                     textBox1.ScrollToCaret();
@@ -160,7 +158,7 @@ namespace DottorWhy
                     break;
                 }
             }
-           
+
             e.Handled = true;
             e.SuppressKeyPress = true;
         }
@@ -169,10 +167,10 @@ namespace DottorWhy
         private void Clicca(Giocatore Giocatore, Pulsante premuto)
         {
             Giocatore.attivo = false;
-            if ( DomandaCorrente.risposta==premuto)
+            if (DomandaCorrente.risposta == premuto)
             {
                 textBox1.Text += "GIUSTO!!!";
-                SettaGiocatoriAttivi(false);
+                //SettaGiocatoriAttivi(false);
             }
         }
 
@@ -186,7 +184,7 @@ namespace DottorWhy
         private void button1_Click(object sender, EventArgs e)
         {
 
-            Domanda d = new Domanda();
+            /*Domanda d = new Domanda();
             d.Testo = "sei frocio?"+i;
             Dictionary<Pulsante, String> dd = new Dictionary<Pulsante, string>();
             dd.Add(Pulsante.X, "Si");
@@ -197,7 +195,9 @@ namespace DottorWhy
             d.risposta = Pulsante.Q;
 
 
-            DomandaCorrente = d;
+            DomandaCorrente = d;*/
+
+            DomandaCorrente = Domande[i];
 
             /*using (FileStream s = File.OpenWrite("pippo.txt"))
             {
@@ -208,7 +208,7 @@ namespace DottorWhy
             }*/
 
 
-            
+
         }
     }
 
@@ -218,7 +218,7 @@ namespace DottorWhy
     {
         public String Testo;
         public Pulsante risposta;
-        public Dictionary<Pulsante,String> ListaRisp= new Dictionary<Pulsante, String>();
+        public Dictionary<Pulsante, String> ListaRisp = new Dictionary<Pulsante, String>();
 
     }
     public class Giocatore
