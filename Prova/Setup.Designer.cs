@@ -1,4 +1,7 @@
-﻿namespace DottorWhy
+﻿using ExtendCSharp;
+using System.Windows.Forms;
+
+namespace DottorWhy
 {
     partial class Setup
     {
@@ -44,6 +47,12 @@
             this.textBoxQ = new System.Windows.Forms.TextBox();
             this.textBoxT = new System.Windows.Forms.TextBox();
             this.textBoxC = new System.Windows.Forms.TextBox();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button_inport = new System.Windows.Forms.Button();
+            this.button_save = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
@@ -100,7 +109,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(333, 321);
+            this.button2.Location = new System.Drawing.Point(252, 321);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(30, 28);
             this.button2.TabIndex = 5;
@@ -110,7 +119,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(18, 291);
+            this.button3.Location = new System.Drawing.Point(45, 257);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(156, 58);
             this.button3.TabIndex = 6;
@@ -124,7 +133,6 @@
             this.textBoxX.Name = "textBoxX";
             this.textBoxX.Size = new System.Drawing.Size(100, 20);
             this.textBoxX.TabIndex = 3;
-            this.textBoxX.Visible = false;
             // 
             // label3
             // 
@@ -134,7 +142,6 @@
             this.label3.Size = new System.Drawing.Size(14, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "X";
-            this.label3.Visible = false;
             // 
             // label4
             // 
@@ -144,7 +151,6 @@
             this.label4.Size = new System.Drawing.Size(15, 13);
             this.label4.TabIndex = 4;
             this.label4.Text = "Q";
-            this.label4.Visible = false;
             // 
             // label5
             // 
@@ -154,7 +160,6 @@
             this.label5.Size = new System.Drawing.Size(14, 13);
             this.label5.TabIndex = 4;
             this.label5.Text = "T";
-            this.label5.Visible = false;
             // 
             // label6
             // 
@@ -164,7 +169,6 @@
             this.label6.Size = new System.Drawing.Size(14, 13);
             this.label6.TabIndex = 4;
             this.label6.Text = "C";
-            this.label6.Visible = false;
             // 
             // textBoxQ
             // 
@@ -172,7 +176,6 @@
             this.textBoxQ.Name = "textBoxQ";
             this.textBoxQ.Size = new System.Drawing.Size(100, 20);
             this.textBoxQ.TabIndex = 3;
-            this.textBoxQ.Visible = false;
             // 
             // textBoxT
             // 
@@ -180,7 +183,6 @@
             this.textBoxT.Name = "textBoxT";
             this.textBoxT.Size = new System.Drawing.Size(100, 20);
             this.textBoxT.TabIndex = 3;
-            this.textBoxT.Visible = false;
             // 
             // textBoxC
             // 
@@ -188,15 +190,69 @@
             this.textBoxC.Name = "textBoxC";
             this.textBoxC.Size = new System.Drawing.Size(100, 20);
             this.textBoxC.TabIndex = 3;
-            this.textBoxC.Visible = false;
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = "File salvataggio Giocatori | *.gdw";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(216, 355);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(66, 21);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "Pulisci";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.BackgroundImage = global::DottorWhy.Properties.Resources.edit_256;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button5.Location = new System.Drawing.Point(12, 340);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(30, 28);
+            this.button5.TabIndex = 5;
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button_inport
+            // 
+            this.button_inport.BackgroundImage = global::DottorWhy.Properties.Resources._in;
+            this.button_inport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_inport.Location = new System.Drawing.Point(333, 321);
+            this.button_inport.Name = "button_inport";
+            this.button_inport.Size = new System.Drawing.Size(30, 28);
+            this.button_inport.TabIndex = 5;
+            this.button_inport.UseVisualStyleBackColor = true;
+            this.button_inport.Click += new System.EventHandler(this.button_inport_Click);
+            // 
+            // button_save
+            // 
+            this.button_save.BackgroundImage = global::DottorWhy.Properties.Resources.save;
+            this.button_save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_save.Location = new System.Drawing.Point(297, 321);
+            this.button_save.Name = "button_save";
+            this.button_save.Size = new System.Drawing.Size(30, 28);
+            this.button_save.TabIndex = 5;
+            this.button_save.UseVisualStyleBackColor = true;
+            this.button_save.Click += new System.EventHandler(this.button_save_Click);
             // 
             // Setup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(382, 373);
+            this.ClientSize = new System.Drawing.Size(382, 380);
             this.Controls.Add(this.button3);
+            this.Controls.Add(this.button_inport);
+            this.Controls.Add(this.button_save);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -237,5 +293,11 @@
         private System.Windows.Forms.TextBox textBoxQ;
         private System.Windows.Forms.TextBox textBoxT;
         private System.Windows.Forms.TextBox textBoxC;
+        private Button button_inport;
+        private Button button_save;
+        private SaveFileDialog saveFileDialog1;
+        private OpenFileDialog openFileDialog1;
+        private Button button4;
+        private Button button5;
     }
 }

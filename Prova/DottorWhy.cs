@@ -13,10 +13,14 @@ using System.IO;
 
 namespace DottorWhy
 {
-    public partial class Form1 : Form
+    public partial class DottorWhy : Form
     {
+        int MaxColonne = 4;
 
-        Dictionary<Giocatore, Dictionary<Keys, Pulsante>> Giocatori = new Dictionary<Giocatore, Dictionary<Keys, Pulsante>>();
+
+
+
+        List<Giocatore> Giocatori = null;
         
         Domanda _DomandaCorrente;
         Domanda DomandaCorrente
@@ -37,21 +41,29 @@ namespace DottorWhy
         List<Domanda> Domande = new List<Domanda>();
 
 
-        public Form1()
+        public DottorWhy()
         {
             InitializeComponent();
-
+            Giocatori = new List<Giocatore>();
         }
-
+        public DottorWhy(List<Giocatore> g)
+        {
+            InitializeComponent();
+            if (g == null)
+                Giocatori = new List<Giocatore>();
+            else
+                Giocatori = g;
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            /*
             Dictionary<Keys, Pulsante> t = new Dictionary<Keys, Pulsante>();
             t.Add(Keys.NumPad0, Pulsante.X);
             t.Add(Keys.NumPad1, Pulsante.Q);
             t.Add(Keys.NumPad2, Pulsante.T);
             t.Add(Keys.NumPad3, Pulsante.C);
-            Giocatori.Add(new Giocatore("Giocatore 1"), t);
+            Giocatori.Add(new Giocatore("Giocatore 1",t));
 
 
             t = new Dictionary<Keys, Pulsante>();
@@ -59,7 +71,7 @@ namespace DottorWhy
             t.Add(Keys.NumPad5, Pulsante.Q);
             t.Add(Keys.NumPad6, Pulsante.T);
             t.Add(Keys.NumPad7, Pulsante.C);
-            Giocatori.Add(new Giocatore("Giocatore 2"), t);
+            Giocatori.Add(new Giocatore("Giocatore 2", t));
 
 
             t = new Dictionary<Keys, Pulsante>();
@@ -67,7 +79,7 @@ namespace DottorWhy
             t.Add(Keys.B, Pulsante.Q);
             t.Add(Keys.C, Pulsante.T);
             t.Add(Keys.D, Pulsante.C);
-            Giocatori.Add(new Giocatore("Giocatore 3"), t);
+            Giocatori.Add(new Giocatore("Giocatore 3", t));
 
 
             t = new Dictionary<Keys, Pulsante>();
@@ -75,14 +87,14 @@ namespace DottorWhy
             t.Add(Keys.F, Pulsante.Q);
             t.Add(Keys.G, Pulsante.T);
             t.Add(Keys.H, Pulsante.C);
-            Giocatori.Add(new Giocatore("Giocatore 4"), t);
+            Giocatori.Add(new Giocatore("Giocatore 4", t));
 
             t = new Dictionary<Keys, Pulsante>();
             t.Add(Keys.I, Pulsante.X);
             t.Add(Keys.J, Pulsante.Q);
             t.Add(Keys.K, Pulsante.T);
             t.Add(Keys.L, Pulsante.C);
-            Giocatori.Add(new Giocatore("Giocatore 5"), t);
+            Giocatori.Add(new Giocatore("Giocatore 5", t));
 
 
             t = new Dictionary<Keys, Pulsante>();
@@ -90,7 +102,7 @@ namespace DottorWhy
             t.Add(Keys.N, Pulsante.Q);
             t.Add(Keys.O, Pulsante.T);
             t.Add(Keys.P, Pulsante.C);
-            Giocatori.Add(new Giocatore("Giocatore 6"), t);
+            Giocatori.Add(new Giocatore("Giocatore 6", t));
 
 
             t = new Dictionary<Keys, Pulsante>();
@@ -98,25 +110,30 @@ namespace DottorWhy
             t.Add(Keys.R, Pulsante.Q);
             t.Add(Keys.S, Pulsante.T);
             t.Add(Keys.T, Pulsante.C);
-            Giocatori.Add(new Giocatore("Giocatore 7"), t);
+            Giocatori.Add(new Giocatore("Giocatore 7", t));
+
+            */
 
 
-            int i = 0;
-            foreach (KeyValuePair<Giocatore, Dictionary<Keys, Pulsante>> g in Giocatori)
+            int r = 0,c=0;
+            foreach (Giocatore g in Giocatori)
             {
-                g.Key.ControlloGrafico = new ControlGiocatore();
-                g.Key.ControlloGrafico.Location = new Point(i++ * g.Key.ControlloGrafico.Width, 0);
-                panel_giocatori.Controls.Add(g.Key.ControlloGrafico);
+                g.ControlloGrafico = new ControlGiocatore();
+                g.ControlloGrafico.Location = new Point(c++ * g.ControlloGrafico.Width, r * g.ControlloGrafico.Height);
+                panel_giocatori.Controls.Add(g.ControlloGrafico);
+
+                if (c >= MaxColonne)
+                {
+                    c = 0;
+                    r++;
+                }
             }
 
-            List<Control> l = this.GetControl(true);
-            foreach (Control c in l)
-            {
-                c.KeyDown += KeyDownEvent;
-            }
+            foreach (Control cc in this.GetControl(true))
+                cc.KeyDown += KeyDownEvent;
 
-            
-            
+
+
 
 
             /*Domanda d = new Domanda();
@@ -147,9 +164,12 @@ namespace DottorWhy
             }*/
 
             if (!File.Exists("Domande.txt"))
+            {
+                MessageBox.Show("Attenzione!\r\nFile delle domande non trovato;\r\nne è stato appena creato uno VUOTO", "Attenzione!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 File.Create("Domande.txt");
+            }
             else
-                Domande=Json.Deserialize<List<Domanda>>(File.ReadAllText("Domande.txt"));
+                Domande = Json.Deserialize<List<Domanda>>(File.ReadAllText("Domande.txt"));
 
             
         }
@@ -165,15 +185,15 @@ namespace DottorWhy
             if (DomandaCorrente == null)
                 return;
 
-            foreach (KeyValuePair<Giocatore, Dictionary<Keys, Pulsante>> coppia in Giocatori)
+            foreach (Giocatore g in Giocatori)
             {
-                if (coppia.Key.attivo && coppia.Value.ContainsKey(e.KeyCode))
+                if (g.attivo && g.ComandiAssociati.ContainsKey(e.KeyCode))
                 {
-                    textBox1.Text += coppia.Key + " ";
-                    textBox1.Text += coppia.Value[e.KeyCode] + "\r\n";
+                    textBox1.Text += g + " ";
+                    textBox1.Text += g.ComandiAssociati[e.KeyCode] + "\r\n";
                     textBox1.SelectionStart = textBox1.Text.Length;
                     textBox1.ScrollToCaret();
-                    Clicca(coppia.Key, coppia.Value[e.KeyCode]);
+                    Clicca(g, g.ComandiAssociati[e.KeyCode]);
                     break;
                 }
             }
@@ -200,31 +220,14 @@ namespace DottorWhy
 
         private void SettaGiocatoriAttivi(bool Valore)
         {
-            foreach (KeyValuePair<Giocatore, Dictionary<Keys, Pulsante>> coppia in Giocatori)
-                coppia.Key.attivo = Valore;
+            foreach (Giocatore g in Giocatori)
+                g.attivo = Valore;
         }
 
 
         CountDown ContoAllaRovescia = null;
         private void button1_Click(object sender, EventArgs e)
         {
-
-            /*Domanda d = new Domanda();
-            d.Testo = "sei frocio?"+i;
-            Dictionary<Pulsante, String> dd = new Dictionary<Pulsante, string>();
-            dd.Add(Pulsante.X, "Si");
-            dd.Add(Pulsante.T, "Assolutamente SI");
-            dd.Add(Pulsante.Q, "Come vazz (quindi si)");
-            dd.Add(Pulsante.C, "Come Lu (quindi lecca la figa a manetta)");
-            d.ListaRisp = dd;
-            d.risposta = Pulsante.Q;
-
-
-            DomandaCorrente = d;*/
-
-
-
-            
             if (ContoAllaRovescia == null)
             {
                 ContoAllaRovescia = new CountDown(new TimeSpanPlus(0, 10));
@@ -256,107 +259,36 @@ namespace DottorWhy
 
 
 
-            CambiaDomanda();
-            ContoAllaRovescia.Start();
-
+            if(CambiaDomanda())
+                ContoAllaRovescia.Start();
+            else
+                label1.SetTextInvoke("ERRORE NEL RECUPERO DELLE DOMANDE!");
 
         }
 
 
         int i = 0;
-        private void CambiaDomanda()
+        private bool CambiaDomanda()
         {
             if (Domande.Count == 0)
-                return;
+                return false;
             if (i >= Domande.Count)
                 i = 0;
             DomandaCorrente = Domande[i++];
+            return true;
         }
 
 
         private void PulisciGraficaGiocatori()
         {
-            foreach (KeyValuePair<Giocatore, Dictionary<Keys, Pulsante>> g in Giocatori)
+            foreach (Giocatore g in Giocatori)
             {
-                g.Key.PulisciGrafica();
-            }
-
-        }
-
-
-    }
-
-
-
-    public class Domanda
-    {
-        public String Testo;
-        public Pulsante risposta;
-        public Dictionary<Pulsante, String> ListaRisp = new Dictionary<Pulsante, String>();
-
-    }
-    public class Giocatore
-    {
-        String Name;
-        public bool attivo = true;
-        int _Punteggio = 0;
-        public int Punteggio
-        {
-            get
-            {
-                return _Punteggio;
-            }
-            set
-            {
-                _Punteggio = value;
-                ControlloGrafico.textBox_Punteggio.Text = _Punteggio + "";
+                g.PulisciGrafica();
             }
         }
 
-        
-        public ControlGiocatore ControlloGrafico = null;
-        public Giocatore(String Name)
-        {
-            this.Name = Name;
-        }
-        public override string ToString()
-        {
-            return Name;
-        }
 
-        public void PulisciGrafica()
-        {
-            if(ControlloGrafico!=null)
-            {
-                ControlloGrafico.textBox_Nome.Text = Name;
-                ControlloGrafico.textBox_Punteggio.Text = Punteggio + "";
-                ControlloGrafico.textBox_Pulsante.Text = "";
-                ControlloGrafico.textBox_Messaggio.Text = "";
-            }
-        }
-        public void SettaMessaggioGrafica(String s)
-        {
-            if (ControlloGrafico != null)
-            {
-                ControlloGrafico.textBox_Messaggio.Text = s;
-            }
-        }
-
-        public void SettaPulsanteGrafica(String s)
-        {
-            if (ControlloGrafico != null)
-            {
-                ControlloGrafico.textBox_Pulsante.Text = s;
-            }
-        }
-
-    }
-
-    public enum Pulsante
-    {
-        X,
-        Q,
-        T,
-        C
-    }
+    }  
+    
+   
 }

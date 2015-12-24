@@ -1,6 +1,6 @@
 ﻿namespace DottorWhy
 {
-    partial class Form1
+    partial class DottorWhy
     {
         /// <summary>
         /// Variabile di progettazione necessaria.
@@ -37,11 +37,11 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 192);
+            this.textBox1.Location = new System.Drawing.Point(527, 155);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(364, 171);
+            this.textBox1.Size = new System.Drawing.Size(364, 31);
             this.textBox1.TabIndex = 2;
             // 
             // textBox2
@@ -64,11 +64,12 @@
             // 
             // panel_giocatori
             // 
-            this.panel_giocatori.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel_giocatori.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel_giocatori.Location = new System.Drawing.Point(12, 378);
+            this.panel_giocatori.Location = new System.Drawing.Point(12, 192);
             this.panel_giocatori.Name = "panel_giocatori";
-            this.panel_giocatori.Size = new System.Drawing.Size(879, 227);
+            this.panel_giocatori.Size = new System.Drawing.Size(970, 321);
             this.panel_giocatori.TabIndex = 5;
             // 
             // label1
@@ -80,17 +81,17 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "label1";
             // 
-            // Form1
+            // DottorWhy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(903, 617);
+            this.ClientSize = new System.Drawing.Size(994, 525);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel_giocatori);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Name = "Form1";
+            this.Name = "DottorWhy";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownEvent);
