@@ -30,7 +30,7 @@ namespace DottorWhy
                     textBox2.Text += k.Key + " - " + k.Value + "\r\n";
 
                 SettaGiocatoriAttivi(true);
-
+                PulisciGraficaGiocatori();
             }
         }
 
@@ -159,6 +159,12 @@ namespace DottorWhy
 
         private void KeyDownEvent(object sender, KeyEventArgs e)
         {
+            e.Handled = true;
+            e.SuppressKeyPress = true;
+
+            if (DomandaCorrente == null)
+                return;
+
             foreach (KeyValuePair<Giocatore, Dictionary<Keys, Pulsante>> coppia in Giocatori)
             {
                 if (coppia.Key.attivo && coppia.Value.ContainsKey(e.KeyCode))
@@ -172,8 +178,7 @@ namespace DottorWhy
                 }
             }
 
-            e.Handled = true;
-            e.SuppressKeyPress = true;
+            
         }
 
 
@@ -184,10 +189,13 @@ namespace DottorWhy
             if (DomandaCorrente.risposta == premuto)
             {
                 Giocatore.SettaMessaggioGrafica("GIUSTO!!!");
-                Giocatore.Punteggio += 10;
+                Giocatore.Punteggio += (ContoAllaRovescia.Time.Seconds)*50;
                 //SettaGiocatoriAttivi(false);
             }
-
+            else
+            {
+                Giocatore.Punteggio -= (ContoAllaRovescia.Time.Seconds) * 60;
+            }
         }
 
         private void SettaGiocatoriAttivi(bool Valore)
@@ -196,7 +204,8 @@ namespace DottorWhy
                 coppia.Key.attivo = Valore;
         }
 
-        
+
+        CountDown ContoAllaRovescia = null;
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -213,7 +222,43 @@ namespace DottorWhy
 
             DomandaCorrente = d;*/
 
+
+
+            
+            if (ContoAllaRovescia == null)
+            {
+                ContoAllaRovescia = new CountDown(new TimeSpanPlus(0, 10));
+                ContoAllaRovescia.Tick+= (CountDown cd) =>
+                {
+                    label1.SetTextInvoke( cd.ToString("ss"));
+                };
+                ContoAllaRovescia.Started += (CountDown cd) =>
+                {
+                    label1.SetTextInvoke( cd.ToString("ss"));
+                };
+
+                ContoAllaRovescia.Stopped += (CountDown cd, StopStatus s) =>
+                {
+                    if(s==StopStatus.End)
+                    {   
+                        label1.SetTextInvoke( "FINE TEMPO!");
+                    }
+                    else
+                    {
+                        label1.SetTextInvoke( "INTERROTTO!");
+                    }
+                    SettaGiocatoriAttivi(false);
+                };
+
+            }
+            else
+                ContoAllaRovescia.SetTime(new TimeSpanPlus(0, 10));
+
+
+
             CambiaDomanda();
+            ContoAllaRovescia.Start();
+
 
         }
 
@@ -238,10 +283,7 @@ namespace DottorWhy
 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
 
-        }
     }
 
 
