@@ -10,13 +10,14 @@ using System.Windows.Forms;
 using ExtendCSharp;
 using System.IO;
 
+
 namespace DottorWhy
 {
     public partial class Form1 : Form
     {
 
         Dictionary<Giocatore, Dictionary<Keys, Pulsante>> Giocatori = new Dictionary<Giocatore, Dictionary<Keys, Pulsante>>();
-
+        
         Domanda _DomandaCorrente;
         Domanda DomandaCorrente
         {
@@ -100,6 +101,13 @@ namespace DottorWhy
             Giocatori.Add(new Giocatore("Giocatore 7"), t);
 
 
+            int i = 0;
+            foreach (KeyValuePair<Giocatore, Dictionary<Keys, Pulsante>> g in Giocatori)
+            {
+                g.Key.ControlloGrafico = new ControlGiocatore();
+                g.Key.ControlloGrafico.Location = new Point(i++ * g.Key.ControlloGrafico.Width, 0);
+                panel_giocatori.Controls.Add(g.Key.ControlloGrafico);
+            }
 
             List<Control> l = this.GetControl(true);
             foreach (Control c in l)
@@ -107,6 +115,8 @@ namespace DottorWhy
                 c.KeyDown += KeyDownEvent;
             }
 
+            
+            
 
 
             /*Domanda d = new Domanda();
@@ -123,22 +133,25 @@ namespace DottorWhy
             Domande.Add(d);
             DomandaCorrente = d;*/
 
-            foreach (String s in File.ReadLines("Domande.txt"))
-            {
-                Domande.Add(Json.Deserialize<Domanda>(s));
-            }
-
-            /* using (FileStream s = File.OpenWrite("Domande.txt"))
+            /* foreach (String s in File.ReadLines("Domande.txt"))
              {
-                 using (StreamWriter sw = new StreamWriter(s))
-                 {
-                     sw.WriteLine(Json.Serialize(Domande));
-                 }
+                 Domande.Add(Json.Deserialize<Domanda>(s));
              }*/
 
-            // Domande=Json.Deserialize<List<Domanda>>(File.ReadAllText("Domande.txt"));
+            /*using (FileStream s = File.OpenWrite("Domande1.txt"))
+            {
+                using (StreamWriter sw = new StreamWriter(s))
+                {
+                    sw.WriteLine(Json.Serialize(Domande));
+                }
+            }*/
 
+            if (!File.Exists("Domande.txt"))
+                File.Create("Domande.txt");
+            else
+                Domande=Json.Deserialize<List<Domanda>>(File.ReadAllText("Domande.txt"));
 
+            
         }
 
 
@@ -167,11 +180,14 @@ namespace DottorWhy
         private void Clicca(Giocatore Giocatore, Pulsante premuto)
         {
             Giocatore.attivo = false;
+            Giocatore.SettaPulsanteGrafica(premuto.ToString());
             if (DomandaCorrente.risposta == premuto)
             {
-                textBox1.Text += "GIUSTO!!!";
+                Giocatore.SettaMessaggioGrafica("GIUSTO!!!");
+                Giocatore.Punteggio += 10;
                 //SettaGiocatoriAttivi(false);
             }
+
         }
 
         private void SettaGiocatoriAttivi(bool Valore)
@@ -180,7 +196,7 @@ namespace DottorWhy
                 coppia.Key.attivo = Valore;
         }
 
-        int i = 0;
+        
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -197,17 +213,33 @@ namespace DottorWhy
 
             DomandaCorrente = d;*/
 
-            DomandaCorrente = Domande[i];
+            CambiaDomanda();
 
-            /*using (FileStream s = File.OpenWrite("pippo.txt"))
+        }
+
+
+        int i = 0;
+        private void CambiaDomanda()
+        {
+            if (Domande.Count == 0)
+                return;
+            if (i >= Domande.Count)
+                i = 0;
+            DomandaCorrente = Domande[i++];
+        }
+
+
+        private void PulisciGraficaGiocatori()
+        {
+            foreach (KeyValuePair<Giocatore, Dictionary<Keys, Pulsante>> g in Giocatori)
             {
-                using (StreamWriter sw = new StreamWriter(s))
-                {
-                    sw.WriteLine(Json.Serialize(d));
-                }
-            }*/
+                g.Key.PulisciGrafica();
+            }
 
+        }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
 
         }
     }
@@ -225,6 +257,22 @@ namespace DottorWhy
     {
         String Name;
         public bool attivo = true;
+        int _Punteggio = 0;
+        public int Punteggio
+        {
+            get
+            {
+                return _Punteggio;
+            }
+            set
+            {
+                _Punteggio = value;
+                ControlloGrafico.textBox_Punteggio.Text = _Punteggio + "";
+            }
+        }
+
+        
+        public ControlGiocatore ControlloGrafico = null;
         public Giocatore(String Name)
         {
             this.Name = Name;
@@ -233,6 +281,33 @@ namespace DottorWhy
         {
             return Name;
         }
+
+        public void PulisciGrafica()
+        {
+            if(ControlloGrafico!=null)
+            {
+                ControlloGrafico.textBox_Nome.Text = Name;
+                ControlloGrafico.textBox_Punteggio.Text = Punteggio + "";
+                ControlloGrafico.textBox_Pulsante.Text = "";
+                ControlloGrafico.textBox_Messaggio.Text = "";
+            }
+        }
+        public void SettaMessaggioGrafica(String s)
+        {
+            if (ControlloGrafico != null)
+            {
+                ControlloGrafico.textBox_Messaggio.Text = s;
+            }
+        }
+
+        public void SettaPulsanteGrafica(String s)
+        {
+            if (ControlloGrafico != null)
+            {
+                ControlloGrafico.textBox_Pulsante.Text = s;
+            }
+        }
+
     }
 
     public enum Pulsante
