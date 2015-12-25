@@ -10,11 +10,11 @@ using System.Windows.Forms;
 using ExtendCSharp;
 using System.IO;
 using DottorWhy.Classes;
-using DottorWhy.Controls;
+using DottorWhy.Controlli;
 
 namespace DottorWhy.Forms
 {
-    public partial class DottorWhy : Form
+    public partial class DottorWhyForm : Form
     {
         int MaxColonne = 4;
 
@@ -30,9 +30,12 @@ namespace DottorWhy.Forms
             set
             {
                 _DomandaCorrente = value;
-                textBox2.Text = _DomandaCorrente.Testo + "\r\n\r\n";
-                foreach (KeyValuePair<Pulsante, String> k in _DomandaCorrente.ListaRisp)
-                    textBox2.Text += k.Key + " - " + k.Value + "\r\n";
+                textBox_domanda.Text = _DomandaCorrente.Testo;
+
+                textBox_X.Text = _DomandaCorrente.ListaRisp[Pulsante.X];
+                textBox_Q.Text = _DomandaCorrente.ListaRisp[Pulsante.Q];
+                textBox_T.Text = _DomandaCorrente.ListaRisp[Pulsante.T];
+                textBox_C.Text = _DomandaCorrente.ListaRisp[Pulsante.C];
 
                 SettaGiocatoriAttivi(true);
                 PulisciGraficaGiocatori();
@@ -42,12 +45,12 @@ namespace DottorWhy.Forms
         List<Domanda> Domande = new List<Domanda>();
 
 
-        public DottorWhy()
+        public DottorWhyForm()
         {
             InitializeComponent();
             Giocatori = new List<Giocatore>();
         }
-        public DottorWhy(List<Giocatore> g)
+        public DottorWhyForm(List<Giocatore> g)
         {
             InitializeComponent();
             if (g == null)
@@ -193,10 +196,6 @@ namespace DottorWhy.Forms
             {
                 if (g.attivo && g.ComandiAssociati.ContainsKey(e.KeyCode))
                 {
-                    textBox1.Text += g + " ";
-                    textBox1.Text += g.ComandiAssociati[e.KeyCode] + "\r\n";
-                    textBox1.SelectionStart = textBox1.Text.Length;
-                    textBox1.ScrollToCaret();
                     Clicca(g, g.ComandiAssociati[e.KeyCode]);
                     break;
                 }

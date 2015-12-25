@@ -106,7 +106,7 @@ namespace DottorWhy.Forms
 
             new Thread(() =>
             {
-                DottorWhy dw = new DottorWhy(Giocatori);
+                DottorWhyForm dw = new DottorWhyForm(Giocatori);
                 dw.ShowDialog();
             }).Start();
             

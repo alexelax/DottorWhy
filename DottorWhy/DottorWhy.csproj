@@ -47,18 +47,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\ControlGiocatore.cs">
+    <Compile Include="Controlli\ControlGiocatore.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\ControlGiocatore.Designer.cs">
+    <Compile Include="Controlli\ControlGiocatore.Designer.cs">
       <DependentUpon>ControlGiocatore.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Domanda.cs" />
-    <Compile Include="Forms\DottorWhy.cs">
+    <Compile Include="Controlli\PanelloDisegno.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlli\PanelloDisegno.Designer.cs">
+      <DependentUpon>PanelloDisegno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DottorWhyForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DottorWhy.Designer.cs">
-      <DependentUpon>DottorWhy.cs</DependentUpon>
+    <Compile Include="Forms\DottorWhyForm.Designer.cs">
+      <DependentUpon>DottorWhyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\EditDomande.cs">
       <SubType>Form</SubType>
@@ -75,11 +81,14 @@
     <Compile Include="Forms\Setup.Designer.cs">
       <DependentUpon>Setup.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Controls\ControlGiocatore.resx">
+    <EmbeddedResource Include="Controlli\ControlGiocatore.resx">
       <DependentUpon>ControlGiocatore.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DottorWhy.resx">
-      <DependentUpon>DottorWhy.cs</DependentUpon>
+    <EmbeddedResource Include="Controlli\PanelloDisegno.resx">
+      <DependentUpon>PanelloDisegno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DottorWhyForm.resx">
+      <DependentUpon>DottorWhyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditDomande.resx">
       <DependentUpon>EditDomande.cs</DependentUpon>

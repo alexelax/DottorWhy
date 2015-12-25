@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.Serialization;
-using DottorWhy.Controls;
+using DottorWhy.Controlli;
 
 namespace DottorWhy.Classes
 {

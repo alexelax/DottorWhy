@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ExtendCSharp;
 
-namespace DottorWhy.Controls
+namespace DottorWhy.Controlli
 {
     public partial class ControlGiocatore : UserControl
     {
