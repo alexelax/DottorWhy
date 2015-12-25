@@ -1,4 +1,5 @@
-﻿using ExtendCSharp;
+﻿using DottorWhy.Classes;
+using ExtendCSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DottorWhy
+namespace DottorWhy.Forms
 {
     public partial class EditDomande : Form
     {

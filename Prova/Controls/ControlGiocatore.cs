@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DottorWhy
+namespace DottorWhy.Controls
 {
     public partial class ControlGiocatore : UserControl
     {

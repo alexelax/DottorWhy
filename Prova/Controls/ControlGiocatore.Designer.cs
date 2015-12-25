@@ -1,4 +1,4 @@
-﻿namespace DottorWhy
+﻿namespace DottorWhy.Controls
 {
     partial class ControlGiocatore
     {

@@ -1,4 +1,4 @@
-﻿namespace DottorWhy
+﻿namespace DottorWhy.Forms
 {
     partial class DottorWhy
     {

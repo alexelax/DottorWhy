@@ -47,41 +47,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlGiocatore.cs">
+    <Compile Include="Controls\ControlGiocatore.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ControlGiocatore.Designer.cs">
+    <Compile Include="Controls\ControlGiocatore.Designer.cs">
       <DependentUpon>ControlGiocatore.cs</DependentUpon>
     </Compile>
-    <Compile Include="Domanda.cs" />
-    <Compile Include="DottorWhy.cs">
+    <Compile Include="Classes\Domanda.cs" />
+    <Compile Include="Forms\DottorWhy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DottorWhy.Designer.cs">
+    <Compile Include="Forms\DottorWhy.Designer.cs">
       <DependentUpon>DottorWhy.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditDomande.cs">
+    <Compile Include="Forms\EditDomande.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditDomande.Designer.cs">
+    <Compile Include="Forms\EditDomande.Designer.cs">
       <DependentUpon>EditDomande.cs</DependentUpon>
     </Compile>
-    <Compile Include="Giocatore.cs" />
+    <Compile Include="Classes\Giocatore.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Setup.cs">
+    <Compile Include="Forms\Setup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Setup.Designer.cs">
+    <Compile Include="Forms\Setup.Designer.cs">
       <DependentUpon>Setup.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ControlGiocatore.resx">
+    <EmbeddedResource Include="Controls\ControlGiocatore.resx">
       <DependentUpon>ControlGiocatore.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DottorWhy.resx">
+    <EmbeddedResource Include="Forms\DottorWhy.resx">
       <DependentUpon>DottorWhy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditDomande.resx">
+    <EmbeddedResource Include="Forms\EditDomande.resx">
       <DependentUpon>EditDomande.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -94,7 +94,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Setup.resx">
+    <EmbeddedResource Include="Forms\Setup.resx">
       <DependentUpon>Setup.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -126,6 +126,7 @@
   <ItemGroup>
     <None Include="Resources\edit_256.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

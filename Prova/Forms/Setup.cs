@@ -10,8 +10,9 @@ using System.Windows.Forms;
 using ExtendCSharp;
 using System.Threading;
 using System.IO;
+using DottorWhy.Classes;
 
-namespace DottorWhy
+namespace DottorWhy.Forms
 {
     public partial class Setup : Form
     {

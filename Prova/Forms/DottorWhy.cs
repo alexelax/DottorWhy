@@ -9,9 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ExtendCSharp;
 using System.IO;
+using DottorWhy.Classes;
+using DottorWhy.Controls;
 
-
-namespace DottorWhy
+namespace DottorWhy.Forms
 {
     public partial class DottorWhy : Form
     {

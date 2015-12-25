@@ -1,7 +1,7 @@
 ﻿using ExtendCSharp;
 using System.Windows.Forms;
 
-namespace DottorWhy
+namespace DottorWhy.Forms
 {
     partial class Setup
     {
