@@ -129,6 +129,8 @@ namespace DottorWhy.Forms
                     r++;
                 }
             }
+            PulisciGraficaGiocatori();
+
 
             foreach (Control cc in this.GetControl(true))
                 cc.KeyDown += KeyDownEvent;
@@ -171,6 +173,7 @@ namespace DottorWhy.Forms
             }
             else
                 Domande = Json.Deserialize<List<Domanda>>(File.ReadAllText("Domande.txt"));
+
 
             
         }

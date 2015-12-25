@@ -30,7 +30,7 @@ namespace DottorWhy.Classes
             {
                 _Punteggio = value;
                 if(ControlloGrafico!=null)
-                    ControlloGrafico.textBox_Punteggio.Text = _Punteggio + "";
+                    ControlloGrafico.label_Punteggio.Text = _Punteggio + "";
             }
         }
 
@@ -61,24 +61,24 @@ namespace DottorWhy.Classes
         {
             if (ControlloGrafico != null)
             {
-                ControlloGrafico.textBox_Nome.Text = Name;
-                ControlloGrafico.textBox_Punteggio.Text = Punteggio + "";
-                ControlloGrafico.textBox_Pulsante.Text = "";
-                ControlloGrafico.textBox_Messaggio.Text = "";
+                ControlloGrafico.label_nome.Text = Name;
+                ControlloGrafico.label_Punteggio.Text = Punteggio + "";
+                ControlloGrafico.label_Pulsante.Text = "";
+                ControlloGrafico.label_Messaggio.Text = "";
             }
         }
         public void SettaMessaggioGrafica(String s)
         {
             if (ControlloGrafico != null)
             {
-                ControlloGrafico.textBox_Messaggio.Text = s;
+                ControlloGrafico.label_Messaggio.Text = s;
             }
         }
         public void SettaPulsanteGrafica(String s)
         {
             if (ControlloGrafico != null)
             {
-                ControlloGrafico.textBox_Pulsante.Text = s;
+                ControlloGrafico.label_Pulsante.Text = s;
             }
         }
 
