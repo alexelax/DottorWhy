@@ -164,7 +164,7 @@ namespace DottorWhy.Forms
 
             if (!File.Exists("Domande.txt"))
             {
-                MessageBox.Show("Attenzione!\r\nFile delle domande non trovato;\r\nne è stato appena creato uno VUOTO", "Attenzione!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Attenzione!\r\nFile delle domande non trovato;\r\n ne è stato appena creato uno VUOTO", "Attenzione!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 File.Create("Domande.txt");
                 Domande = new List<Domanda>();
             }
@@ -213,11 +213,11 @@ namespace DottorWhy.Forms
                 {
                     if (s == StopStatus.End)
                     {
-                        label1.SetTextInvoke("FINE TEMPO!");
+                        label1.SetTextInvoke("TEMPO SCADUTO");
                     }
                     else
                     {
-                        label1.SetTextInvoke("INTERROTTO!");
+                        label1.SetTextInvoke("INTERROTTO");
                     }
                     SettaGiocatoriAttivi(false);
                 };
@@ -251,16 +251,17 @@ namespace DottorWhy.Forms
         {
             Giocatore.attivo = false;
             Giocatore.SettaPulsanteGrafica(premuto.ToString());
-            if (DomandaCorrente.risposta == premuto)
-            {
-                Giocatore.SettaMessaggioGrafica("GIUSTO!!!");
-                Giocatore.Punteggio += (ContoAllaRovescia.Time.Seconds) * 50;
-                //SettaGiocatoriAttivi(false);
-            }
-            else
-            {
-                Giocatore.Punteggio -= (ContoAllaRovescia.Time.Seconds) * 60;
-            }
+     
+                if (DomandaCorrente.risposta == premuto)
+                {
+                    Giocatore.SettaMessaggioGrafica("CORRETTO!");
+                    Giocatore.Punteggio += (ContoAllaRovescia.Time.Seconds) * 50;
+                    //SettaGiocatoriAttivi(false);
+                }
+                else
+                {
+                    Giocatore.Punteggio -= (ContoAllaRovescia.Time.Seconds) * 60;
+                }
         }
         private void PulisciGraficaGiocatori()
         {
