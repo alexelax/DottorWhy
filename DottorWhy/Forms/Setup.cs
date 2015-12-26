@@ -16,6 +16,7 @@ namespace DottorWhy.Forms
 {
     public partial class Setup : Form
     {
+        
         TextBoxPlus<Keys?> textBoxXX = new TextBoxPlus<Keys?>();
         TextBoxPlus<Keys?> textBoxQQ = new TextBoxPlus<Keys?>();
         TextBoxPlus<Keys?> textBoxTT = new TextBoxPlus<Keys?>();

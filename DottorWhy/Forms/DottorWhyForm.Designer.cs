@@ -30,6 +30,7 @@ namespace DottorWhy.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DottorWhyForm));
             this.textBox_domanda = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.panel_giocatori = new System.Windows.Forms.Panel();
@@ -75,10 +76,10 @@ namespace DottorWhy.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(750, 96);
+            this.label1.Font = new System.Drawing.Font("DS-Digital", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(732, 120);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
+            this.label1.Size = new System.Drawing.Size(154, 47);
             this.label1.TabIndex = 6;
             this.label1.Text = "label1";
             // 
@@ -171,8 +172,9 @@ namespace DottorWhy.Forms
             this.Controls.Add(this.textBox_C);
             this.Controls.Add(this.textBox_X);
             this.Controls.Add(this.textBox_domanda);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DottorWhyForm";
-            this.Text = "Form1";
+            this.Text = "Dr.Why";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownEvent);
             this.ResumeLayout(false);
