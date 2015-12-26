@@ -47,11 +47,13 @@ namespace DottorWhy.Forms
             // 
             // textBox_domanda
             // 
+            this.textBox_domanda.Font = new System.Drawing.Font("Copperplate Gothic Bold", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_domanda.Location = new System.Drawing.Point(12, 12);
             this.textBox_domanda.Multiline = true;
             this.textBox_domanda.Name = "textBox_domanda";
             this.textBox_domanda.Size = new System.Drawing.Size(613, 64);
             this.textBox_domanda.TabIndex = 3;
+            this.textBox_domanda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button1
             // 
@@ -81,9 +83,9 @@ namespace DottorWhy.Forms
             this.label1.Font = new System.Drawing.Font("DS-Digital", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(484, 226);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 47);
+            this.label1.Size = new System.Drawing.Size(130, 47);
             this.label1.TabIndex = 6;
-            this.label1.Text = "label1";
+            this.label1.Text = "Timer";
             // 
             // panelloDisegno1
             // 
@@ -127,35 +129,43 @@ namespace DottorWhy.Forms
             // 
             // textBox_X
             // 
+            this.textBox_X.Font = new System.Drawing.Font("Copperplate Gothic Bold", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_X.Location = new System.Drawing.Point(68, 82);
             this.textBox_X.Multiline = true;
             this.textBox_X.Name = "textBox_X";
             this.textBox_X.Size = new System.Drawing.Size(242, 34);
             this.textBox_X.TabIndex = 3;
+            this.textBox_X.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_Q
             // 
+            this.textBox_Q.Font = new System.Drawing.Font("Copperplate Gothic Bold", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_Q.Location = new System.Drawing.Point(68, 133);
             this.textBox_Q.Multiline = true;
             this.textBox_Q.Name = "textBox_Q";
             this.textBox_Q.Size = new System.Drawing.Size(242, 34);
             this.textBox_Q.TabIndex = 3;
+            this.textBox_Q.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_C
             // 
+            this.textBox_C.Font = new System.Drawing.Font("Copperplate Gothic Bold", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_C.Location = new System.Drawing.Point(383, 82);
             this.textBox_C.Multiline = true;
             this.textBox_C.Name = "textBox_C";
             this.textBox_C.Size = new System.Drawing.Size(242, 34);
             this.textBox_C.TabIndex = 3;
+            this.textBox_C.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_T
             // 
+            this.textBox_T.Font = new System.Drawing.Font("Copperplate Gothic Bold", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_T.Location = new System.Drawing.Point(383, 133);
             this.textBox_T.Multiline = true;
             this.textBox_T.Name = "textBox_T";
             this.textBox_T.Size = new System.Drawing.Size(242, 34);
             this.textBox_T.TabIndex = 3;
+            this.textBox_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // DottorWhyForm
             // 

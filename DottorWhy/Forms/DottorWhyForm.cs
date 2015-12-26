@@ -164,7 +164,7 @@ namespace DottorWhy.Forms
 
             if (!File.Exists("Domande.txt"))
             {
-                MessageBox.Show("Attenzione!\r\nFile delle domande non trovato;\r\n ne è stato appena creato uno VUOTO", "Attenzione!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Attenzione!\r\nFile delle domande non trovato;\r\nne è stato appena creato uno VUOTO", "Attenzione!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 File.Create("Domande.txt");
                 Domande = new List<Domanda>();
             }
@@ -197,6 +197,7 @@ namespace DottorWhy.Forms
         CountDown ContoAllaRovescia = null;
         private void button1_Click(object sender, EventArgs e)
         {
+            panel_giocatori.SetVisibleInvoke(false);
             if (ContoAllaRovescia == null)
             {
                 ContoAllaRovescia = new CountDown(new TimeSpanPlus(0, 10));
@@ -214,6 +215,7 @@ namespace DottorWhy.Forms
                     if (s == StopStatus.End)
                     {
                         label1.SetTextInvoke("TEMPO SCADUTO");
+                        panel_giocatori.SetVisibleInvoke(true);
                     }
                     else
                     {
@@ -235,6 +237,10 @@ namespace DottorWhy.Forms
 
         }
 
+        private static Giocatore GetGiocatore(Giocatore Giocatore)
+        {
+            return Giocatore;
+        }
 
         int i = 0;
         private bool CambiaDomanda()
