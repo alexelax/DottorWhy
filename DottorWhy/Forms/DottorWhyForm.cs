@@ -17,12 +17,8 @@ namespace DottorWhy.Forms
     public partial class DottorWhyForm : Form
     {
         int MaxColonne = 4;
-
-
-
-
         List<Giocatore> Giocatori = null;
-        
+        List<Domanda> Domande = null;
         Domanda _DomandaCorrente;
         Domanda DomandaCorrente
         {
@@ -41,9 +37,6 @@ namespace DottorWhy.Forms
                 PulisciGraficaGiocatori();
             }
         }
-
-        List<Domanda> Domande = new List<Domanda>();
-
 
         public DottorWhyForm()
         {
@@ -173,6 +166,7 @@ namespace DottorWhy.Forms
             {
                 MessageBox.Show("Attenzione!\r\nFile delle domande non trovato;\r\nne è stato appena creato uno VUOTO", "Attenzione!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 File.Create("Domande.txt");
+                Domande = new List<Domanda>();
             }
             else
                 Domande = Json.Deserialize<List<Domanda>>(File.ReadAllText("Domande.txt"));
@@ -180,10 +174,6 @@ namespace DottorWhy.Forms
 
             
         }
-
-
-
-
         private void KeyDownEvent(object sender, KeyEventArgs e)
         {
             e.Handled = true;
@@ -204,54 +194,30 @@ namespace DottorWhy.Forms
             
         }
 
-
-        private void Clicca(Giocatore Giocatore, Pulsante premuto)
-        {
-            Giocatore.attivo = false;
-            Giocatore.SettaPulsanteGrafica(premuto.ToString());
-            if (DomandaCorrente.risposta == premuto)
-            {
-                Giocatore.SettaMessaggioGrafica("GIUSTO!!!");
-                Giocatore.Punteggio += (ContoAllaRovescia.Time.Seconds)*50;
-                //SettaGiocatoriAttivi(false);
-            }
-            else
-            {
-                Giocatore.Punteggio -= (ContoAllaRovescia.Time.Seconds) * 60;
-            }
-        }
-
-        private void SettaGiocatoriAttivi(bool Valore)
-        {
-            foreach (Giocatore g in Giocatori)
-                g.attivo = Valore;
-        }
-
-
         CountDown ContoAllaRovescia = null;
         private void button1_Click(object sender, EventArgs e)
         {
             if (ContoAllaRovescia == null)
             {
                 ContoAllaRovescia = new CountDown(new TimeSpanPlus(0, 10));
-                ContoAllaRovescia.Tick+= (CountDown cd) =>
+                ContoAllaRovescia.Tick += (CountDown cd) =>
                 {
-                    label1.SetTextInvoke( cd.ToString("ss"));
+                    label1.SetTextInvoke(cd.ToString("ss"));
                 };
                 ContoAllaRovescia.Started += (CountDown cd) =>
                 {
-                    label1.SetTextInvoke( cd.ToString("ss"));
+                    label1.SetTextInvoke(cd.ToString("ss"));
                 };
 
                 ContoAllaRovescia.Stopped += (CountDown cd, StopStatus s) =>
                 {
-                    if(s==StopStatus.End)
-                    {   
-                        label1.SetTextInvoke( "FINE TEMPO!");
+                    if (s == StopStatus.End)
+                    {
+                        label1.SetTextInvoke("FINE TEMPO!");
                     }
                     else
                     {
-                        label1.SetTextInvoke( "INTERROTTO!");
+                        label1.SetTextInvoke("INTERROTTO!");
                     }
                     SettaGiocatoriAttivi(false);
                 };
@@ -262,7 +228,7 @@ namespace DottorWhy.Forms
 
 
 
-            if(CambiaDomanda())
+            if (CambiaDomanda())
                 ContoAllaRovescia.Start();
             else
                 label1.SetTextInvoke("ERRORE NEL RECUPERO DELLE DOMANDE!");
@@ -281,7 +247,21 @@ namespace DottorWhy.Forms
             return true;
         }
 
-
+        private void Clicca(Giocatore Giocatore, Pulsante premuto)
+        {
+            Giocatore.attivo = false;
+            Giocatore.SettaPulsanteGrafica(premuto.ToString());
+            if (DomandaCorrente.risposta == premuto)
+            {
+                Giocatore.SettaMessaggioGrafica("GIUSTO!!!");
+                Giocatore.Punteggio += (ContoAllaRovescia.Time.Seconds) * 50;
+                //SettaGiocatoriAttivi(false);
+            }
+            else
+            {
+                Giocatore.Punteggio -= (ContoAllaRovescia.Time.Seconds) * 60;
+            }
+        }
         private void PulisciGraficaGiocatori()
         {
             foreach (Giocatore g in Giocatori)
@@ -289,7 +269,11 @@ namespace DottorWhy.Forms
                 g.PulisciGrafica();
             }
         }
-
+        private void SettaGiocatoriAttivi(bool Valore)
+        {
+            foreach (Giocatore g in Giocatori)
+                g.attivo = Valore;
+        }
 
     }  
     

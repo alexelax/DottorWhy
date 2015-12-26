@@ -27,7 +27,6 @@ namespace DottorWhy.Controlli
 
         public int Margine { get; set; } = 2;
         public int AspectRateo { get; set; } = 1;
-
         public Pen Penna { get; set; } = new Pen(Color.Black,10);
 
 
@@ -35,7 +34,6 @@ namespace DottorWhy.Controlli
         {
             InitializeComponent();
         }
-
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -56,11 +54,13 @@ namespace DottorWhy.Controlli
             {
                 e.Graphics.DrawCircle(Penna,Width/2,Height/2,(Width-2*Margine)/2);
             }
-
-
-
         }
-
+        private void PanelloDisegno_Resize(object sender, EventArgs e)
+        {
+            Margine = Size.Width / 7;
+            Penna = new Pen(Color.Black, Size.Width / 4);
+            Size = new Size(Size.Width, Size.Width * AspectRateo);
+        }
 
 
         public enum Disegno
@@ -72,16 +72,6 @@ namespace DottorWhy.Controlli
             nul
         }
 
-        private void PanelloDisegno_Resize(object sender, EventArgs e)
-        {
-
-            Margine = Size.Width / 7;
-            Penna = new Pen(Color.Black, Size.Width / 4);
-            Size = new Size(Size.Width, Size.Width * AspectRateo);
-            
-            
-
-            
-        }
+        
     }
 }

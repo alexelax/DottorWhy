@@ -22,30 +22,12 @@ namespace DottorWhy.Forms
         private void EditDomande_Load(object sender, EventArgs e)
         {
             if (!File.Exists("Domande.txt"))
-            {
-                using (FileStream s = File.OpenWrite("Domande.txt"))
-                {
-                }
-            }   
+                using (FileStream s = File.OpenWrite("Domande.txt")) { }  
             else
                 listBox1.Items.AddRange(Json.Deserialize<List<Domanda>>(File.ReadAllText("Domande.txt")).ToArray()); 
         }
 
-
-
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            using (FileStream s = File.OpenWrite("Domande.txt"))
-            {
-                using (StreamWriter sw = new StreamWriter(s))
-                {
-                    sw.WriteLine(Json.Serialize(new List<Domanda>(listBox1.Items.Cast<Domanda>())));
-                }
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void AddDomanda_Click(object sender, EventArgs e)
         {
             Domanda d = new Domanda();
             d.Testo = textBox1.Text.Trim();
@@ -58,7 +40,7 @@ namespace DottorWhy.Forms
             d.risposta = radioButtonX.Checked ? Pulsante.X : radioButtonQ.Checked ? Pulsante.Q : radioButtonT.Checked ? Pulsante.X : Pulsante.C;
             listBox1.Items.Add(d);
 
-            if(checkBox1.Checked)
+            if (checkBox1.Checked)
             {
                 textBox1.Text = "";
                 textBox2.Text = "";
@@ -67,18 +49,25 @@ namespace DottorWhy.Forms
                 textBox5.Text = "";
             }
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void RemoveDomanda_Click(object sender, EventArgs e)
         {
             for (int i = listBox1.SelectedIndices.Count - 1; i >= 0; i--)
-            {
                 listBox1.Items.RemoveAt(listBox1.SelectedIndices[i]);
-            }
         }
-
-        private void button4_Click(object sender, EventArgs e)
+        private void ClearAllDomande_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
         }
+        private void SaveDomande_Click(object sender, EventArgs e)
+        {
+            using (FileStream s = File.OpenWrite("Domande.txt"))
+            {
+                using (StreamWriter sw = new StreamWriter(s))
+                {
+                    sw.WriteLine(Json.Serialize(new List<Domanda>(listBox1.Items.Cast<Domanda>())));
+                }
+            }
+        }
+
     }
 }

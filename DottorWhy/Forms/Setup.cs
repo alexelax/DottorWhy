@@ -56,9 +56,7 @@ namespace DottorWhy.Forms
         }
 
 
-
-
-        private void button1_Click(object sender, EventArgs e)
+        private void AddGiocatore_Click(object sender, EventArgs e)
         {
             if (textBoxXX.TextObject == null || textBoxQQ.TextObject == null || textBoxTT.TextObject == null || textBoxCC.TextObject == null)
             {
@@ -68,7 +66,7 @@ namespace DottorWhy.Forms
 
             Giocatore g = null;
             if (textBox1.Text.Trim()=="")
-               g  = new Giocatore("Giocatore " + listBox1.Items.Count);
+               g  = new Giocatore("Giocatore " + (listBox1.Items.Count+1));
             else
                 g = new Giocatore(textBox1.Text.Trim());
 
@@ -84,36 +82,16 @@ namespace DottorWhy.Forms
             PulisciCampi();
 
             listBox1.Items.Add(g);
-
-
-           
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void RemoveGiocatore_Click(object sender, EventArgs e)
         {
             for (int i = listBox1.SelectedIndices.Count - 1; i >= 0; i--)
-            {
-                listBox1.Items.RemoveAt(listBox1.SelectedIndices[i]);
-            }
+                listBox1.Items.RemoveAt(listBox1.SelectedIndices[i]); 
         }
-        private void button3_Click(object sender, EventArgs e)
+        private void ClearAllGiocatori_Click(object sender, EventArgs e)
         {
-            if(listBox1.Items.Count<2)
-            {
-                MessageBox.Show("Inserire almeno 2 giocatori");
-                return;
-            }
-            List<Giocatore> Giocatori = new List<Giocatore>(listBox1.Items.Cast<Giocatore>());
-
-            new Thread(() =>
-            {
-                DottorWhyForm dw = new DottorWhyForm(Giocatori);
-                dw.ShowDialog();
-            }).Start();
-            
-            this.Close();
+            listBox1.Items.Clear();
         }
-
-
 
         private void TextBoxPulsante_KeyDownPlus(TextBoxPlus<Keys?> s, KeyEventArgs ee)
         {
@@ -130,9 +108,6 @@ namespace DottorWhy.Forms
             ee.Handled = true;
             ee.SuppressKeyPress = true;
         }
-
-
-
 
         private bool KeyInUseOtherGiocatore(Keys k)
         {
@@ -161,8 +136,6 @@ namespace DottorWhy.Forms
             return false;
         }
 
-
-
         private void PulisciCampi()
         {
             textBox1.Text = "";
@@ -177,6 +150,7 @@ namespace DottorWhy.Forms
             textBoxTT.BackColor = Color.White;
             textBoxCC.BackColor = Color.White;
         }
+
 
         private void button_save_Click(object sender, EventArgs e)
         {
@@ -235,18 +209,29 @@ namespace DottorWhy.Forms
                 }
             }
         }
-        private void button5_Click(object sender, EventArgs e)
+        private void EditDomande_Click(object sender, EventArgs e)
         {
             new EditDomande().ShowDialog();
         }
 
-
-
-        private void button4_Click(object sender, EventArgs e)
+        private void StartGame_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
+            if (listBox1.Items.Count < 2)
+            {
+                MessageBox.Show("Inserire almeno 2 giocatori");
+                return;
+            }
+            List<Giocatore> Giocatori = new List<Giocatore>(listBox1.Items.Cast<Giocatore>());
+
+            new Thread(() =>
+            {
+                DottorWhyForm dw = new DottorWhyForm(Giocatori);
+                dw.ShowDialog();
+            }).Start();
+
+            this.Close();
         }
 
-        
+
     }
 }
