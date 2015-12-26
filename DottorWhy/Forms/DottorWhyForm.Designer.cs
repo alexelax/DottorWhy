@@ -55,9 +55,11 @@ namespace DottorWhy.Forms
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(754, 22);
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.Font = new System.Drawing.Font("Ninja Naruto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(764, 22);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 71);
+            this.button1.Size = new System.Drawing.Size(120, 184);
             this.button1.TabIndex = 4;
             this.button1.Text = "Nuova Domanda";
             this.button1.UseVisualStyleBackColor = true;
@@ -68,16 +70,16 @@ namespace DottorWhy.Forms
             this.panel_giocatori.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel_giocatori.Location = new System.Drawing.Point(12, 192);
+            this.panel_giocatori.Location = new System.Drawing.Point(12, 324);
             this.panel_giocatori.Name = "panel_giocatori";
-            this.panel_giocatori.Size = new System.Drawing.Size(970, 321);
+            this.panel_giocatori.Size = new System.Drawing.Size(1058, 293);
             this.panel_giocatori.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("DS-Digital", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(732, 120);
+            this.label1.Location = new System.Drawing.Point(484, 226);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(154, 47);
             this.label1.TabIndex = 6;
@@ -159,12 +161,12 @@ namespace DottorWhy.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(994, 525);
+            this.ClientSize = new System.Drawing.Size(1082, 629);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panelloDisegno4);
             this.Controls.Add(this.panelloDisegno3);
             this.Controls.Add(this.panelloDisegno2);
             this.Controls.Add(this.panelloDisegno1);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel_giocatori);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox_T);
