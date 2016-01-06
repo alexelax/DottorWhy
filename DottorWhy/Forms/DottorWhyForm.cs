@@ -16,7 +16,7 @@ namespace DottorWhy.Forms
 {
     public partial class DottorWhyForm : Form
     {
-        int MaxColonne = 4;
+        int MaxColonne = 7;
         List<Giocatore> Giocatori = null;
         List<Domanda> Domande = null;
         Domanda _DomandaCorrente;
@@ -214,7 +214,7 @@ namespace DottorWhy.Forms
                 {
                     if (s == StopStatus.End)
                     {
-                        label1.SetTextInvoke("TEMPO SCADUTO");
+                        label1.SetTextInvoke("STOP");
                         panel_giocatori.SetVisibleInvoke(true);
                     }
                     else
@@ -282,6 +282,16 @@ namespace DottorWhy.Forms
                 g.attivo = Valore;
         }
 
+        private void ResettaClassifica()
+        {
+            foreach (Giocatore g in Giocatori)
+                g.Punteggio = 0;
+        }
+
+        private void button2_Click()
+        {
+            ResettaClassifica();
+        }
     }  
     
    

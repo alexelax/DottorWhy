@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditDomande));
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -66,7 +67,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 22);
+            this.label1.Location = new System.Drawing.Point(12, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 2;
@@ -74,7 +75,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(71, 122);
+            this.textBox2.Location = new System.Drawing.Point(60, 241);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(320, 65);
@@ -82,7 +83,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(71, 193);
+            this.textBox3.Location = new System.Drawing.Point(60, 312);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(320, 65);
@@ -90,7 +91,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(71, 264);
+            this.textBox4.Location = new System.Drawing.Point(60, 99);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(320, 65);
@@ -98,7 +99,7 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(71, 335);
+            this.textBox5.Location = new System.Drawing.Point(60, 170);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(320, 65);
@@ -106,6 +107,7 @@
             // 
             // button1
             // 
+            this.button1.Font = new System.Drawing.Font("Copperplate Gothic Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(397, 347);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(30, 30);
@@ -116,6 +118,7 @@
             // 
             // button2
             // 
+            this.button2.Font = new System.Drawing.Font("Copperplate Gothic Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(545, 347);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(30, 30);
@@ -127,6 +130,7 @@
             // 
             // button3
             // 
+            this.button3.Font = new System.Drawing.Font("Copperplate Gothic Bold", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(397, 387);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(178, 30);
@@ -138,43 +142,41 @@
             // 
             // radioButtonX
             // 
-            this.radioButtonX.AutoSize = true;
+            this.radioButtonX.BackgroundImage = global::DottorWhy.Properties.Resources.Tasto_X_Setup;
             this.radioButtonX.Checked = true;
-            this.radioButtonX.Location = new System.Drawing.Point(12, 123);
+            this.radioButtonX.Location = new System.Drawing.Point(15, 260);
             this.radioButtonX.Name = "radioButtonX";
-            this.radioButtonX.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonX.Size = new System.Drawing.Size(33, 29);
             this.radioButtonX.TabIndex = 7;
-            this.radioButtonX.Text = "X";
+            this.radioButtonX.TabStop = true;
+            this.radioButtonX.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButtonX.UseVisualStyleBackColor = true;
             // 
             // radioButtonQ
             // 
-            this.radioButtonQ.AutoSize = true;
-            this.radioButtonQ.Location = new System.Drawing.Point(12, 194);
+            this.radioButtonQ.BackgroundImage = global::DottorWhy.Properties.Resources.Tasto_Q_Setup;
+            this.radioButtonQ.Location = new System.Drawing.Point(16, 330);
             this.radioButtonQ.Name = "radioButtonQ";
-            this.radioButtonQ.Size = new System.Drawing.Size(33, 17);
+            this.radioButtonQ.Size = new System.Drawing.Size(32, 30);
             this.radioButtonQ.TabIndex = 7;
-            this.radioButtonQ.Text = "Q";
             this.radioButtonQ.UseVisualStyleBackColor = true;
             // 
             // radioButtonT
             // 
-            this.radioButtonT.AutoSize = true;
-            this.radioButtonT.Location = new System.Drawing.Point(12, 265);
+            this.radioButtonT.BackgroundImage = global::DottorWhy.Properties.Resources.Tasto_T_Setup;
+            this.radioButtonT.Location = new System.Drawing.Point(15, 116);
             this.radioButtonT.Name = "radioButtonT";
-            this.radioButtonT.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonT.Size = new System.Drawing.Size(32, 31);
             this.radioButtonT.TabIndex = 7;
-            this.radioButtonT.Text = "T";
             this.radioButtonT.UseVisualStyleBackColor = true;
             // 
             // radioButtonC
             // 
-            this.radioButtonC.AutoSize = true;
-            this.radioButtonC.Location = new System.Drawing.Point(12, 336);
+            this.radioButtonC.BackgroundImage = global::DottorWhy.Properties.Resources.Tasto_C_Setup;
+            this.radioButtonC.Location = new System.Drawing.Point(15, 186);
             this.radioButtonC.Name = "radioButtonC";
-            this.radioButtonC.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonC.Size = new System.Drawing.Size(32, 28);
             this.radioButtonC.TabIndex = 7;
-            this.radioButtonC.Text = "C";
             this.radioButtonC.UseVisualStyleBackColor = true;
             // 
             // button4
@@ -205,6 +207,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(587, 429);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.radioButtonC);
@@ -222,6 +225,7 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditDomande";
             this.Text = "EditDomande";
             this.Load += new System.EventHandler(this.EditDomande_Load);

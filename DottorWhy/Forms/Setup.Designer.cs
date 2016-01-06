@@ -125,7 +125,7 @@ namespace DottorWhy.Forms
             this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
             this.button3.Font = new System.Drawing.Font("Ninja Naruto", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.Red;
-            this.button3.Location = new System.Drawing.Point(41, 280);
+            this.button3.Location = new System.Drawing.Point(37, 280);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(156, 55);
             this.button3.TabIndex = 6;
@@ -135,28 +135,28 @@ namespace DottorWhy.Forms
             // 
             // textBoxX
             // 
-            this.textBoxX.Location = new System.Drawing.Point(87, 128);
+            this.textBoxX.Location = new System.Drawing.Point(73, 198);
             this.textBoxX.Name = "textBoxX";
             this.textBoxX.Size = new System.Drawing.Size(100, 20);
             this.textBoxX.TabIndex = 3;
             // 
             // textBoxQ
             // 
-            this.textBoxQ.Location = new System.Drawing.Point(87, 165);
+            this.textBoxQ.Location = new System.Drawing.Point(73, 233);
             this.textBoxQ.Name = "textBoxQ";
             this.textBoxQ.Size = new System.Drawing.Size(100, 20);
             this.textBoxQ.TabIndex = 3;
             // 
             // textBoxT
             // 
-            this.textBoxT.Location = new System.Drawing.Point(87, 200);
+            this.textBoxT.Location = new System.Drawing.Point(73, 128);
             this.textBoxT.Name = "textBoxT";
             this.textBoxT.Size = new System.Drawing.Size(100, 20);
             this.textBoxT.TabIndex = 3;
             // 
             // textBoxC
             // 
-            this.textBoxC.Location = new System.Drawing.Point(87, 238);
+            this.textBoxC.Location = new System.Drawing.Point(73, 163);
             this.textBoxC.Name = "textBoxC";
             this.textBoxC.Size = new System.Drawing.Size(100, 20);
             this.textBoxC.TabIndex = 3;
@@ -215,41 +215,45 @@ namespace DottorWhy.Forms
             // panelloDisegno4
             // 
             this.panelloDisegno4.AspectRateo = 1;
-            this.panelloDisegno4.DisegnoCorrente = DottorWhy.Controlli.PanelloDisegno.Disegno.Cerchio;
-            this.panelloDisegno4.Location = new System.Drawing.Point(35, 238);
-            this.panelloDisegno4.Margine = 3;
+            this.panelloDisegno4.BackgroundImage = global::DottorWhy.Properties.Resources.Tasto_C_Setup;
+            this.panelloDisegno4.DisegnoCorrente = DottorWhy.Controlli.PanelloDisegno.Disegno.nul;
+            this.panelloDisegno4.Location = new System.Drawing.Point(31, 157);
+            this.panelloDisegno4.Margine = 4;
             this.panelloDisegno4.Name = "panelloDisegno4";
-            this.panelloDisegno4.Size = new System.Drawing.Size(21, 21);
+            this.panelloDisegno4.Size = new System.Drawing.Size(30, 30);
             this.panelloDisegno4.TabIndex = 10;
             // 
             // panelloDisegno3
             // 
             this.panelloDisegno3.AspectRateo = 1;
-            this.panelloDisegno3.DisegnoCorrente = DottorWhy.Controlli.PanelloDisegno.Disegno.Triangolo;
-            this.panelloDisegno3.Location = new System.Drawing.Point(34, 200);
-            this.panelloDisegno3.Margine = 3;
+            this.panelloDisegno3.BackgroundImage = global::DottorWhy.Properties.Resources.Tasto_T_Setup;
+            this.panelloDisegno3.DisegnoCorrente = DottorWhy.Controlli.PanelloDisegno.Disegno.nul;
+            this.panelloDisegno3.Location = new System.Drawing.Point(31, 121);
+            this.panelloDisegno3.Margine = 4;
             this.panelloDisegno3.Name = "panelloDisegno3";
-            this.panelloDisegno3.Size = new System.Drawing.Size(23, 23);
+            this.panelloDisegno3.Size = new System.Drawing.Size(30, 30);
             this.panelloDisegno3.TabIndex = 9;
             // 
             // panelloDisegno2
             // 
             this.panelloDisegno2.AspectRateo = 1;
-            this.panelloDisegno2.DisegnoCorrente = DottorWhy.Controlli.PanelloDisegno.Disegno.Quadrato;
-            this.panelloDisegno2.Location = new System.Drawing.Point(36, 165);
-            this.panelloDisegno2.Margine = 2;
+            this.panelloDisegno2.BackgroundImage = global::DottorWhy.Properties.Resources.Tasto_Q_Setup;
+            this.panelloDisegno2.DisegnoCorrente = DottorWhy.Controlli.PanelloDisegno.Disegno.nul;
+            this.panelloDisegno2.Location = new System.Drawing.Point(31, 228);
+            this.panelloDisegno2.Margine = 4;
             this.panelloDisegno2.Name = "panelloDisegno2";
-            this.panelloDisegno2.Size = new System.Drawing.Size(19, 19);
+            this.panelloDisegno2.Size = new System.Drawing.Size(30, 30);
             this.panelloDisegno2.TabIndex = 8;
             // 
             // panelloDisegno1
             // 
             this.panelloDisegno1.AspectRateo = 1;
-            this.panelloDisegno1.DisegnoCorrente = DottorWhy.Controlli.PanelloDisegno.Disegno.ICCESE;
-            this.panelloDisegno1.Location = new System.Drawing.Point(36, 128);
-            this.panelloDisegno1.Margine = 2;
+            this.panelloDisegno1.BackgroundImage = global::DottorWhy.Properties.Resources.Tasto_X_Setup;
+            this.panelloDisegno1.DisegnoCorrente = DottorWhy.Controlli.PanelloDisegno.Disegno.nul;
+            this.panelloDisegno1.Location = new System.Drawing.Point(31, 192);
+            this.panelloDisegno1.Margine = 4;
             this.panelloDisegno1.Name = "panelloDisegno1";
-            this.panelloDisegno1.Size = new System.Drawing.Size(18, 18);
+            this.panelloDisegno1.Size = new System.Drawing.Size(30, 30);
             this.panelloDisegno1.TabIndex = 7;
             // 
             // Setup

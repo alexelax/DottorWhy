@@ -135,7 +135,30 @@
   <ItemGroup>
     <None Include="Resources\edit_256.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Tasto C_Why.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tasto Q_Why.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tasto T_Why.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tasto X_Why.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tasto C_Setup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tasto Q_Setup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tasto T_Setup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tasto X_Setup.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

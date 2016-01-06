@@ -37,7 +37,7 @@ namespace DottorWhy.Forms
             dd.Add(Pulsante.T, textBox4.Text.Trim());
             dd.Add(Pulsante.C, textBox5.Text.Trim());
             d.ListaRisp = dd;
-            d.risposta = radioButtonX.Checked ? Pulsante.X : radioButtonQ.Checked ? Pulsante.Q : radioButtonT.Checked ? Pulsante.X : Pulsante.C;
+            d.risposta = radioButtonX.Checked ? Pulsante.X : radioButtonQ.Checked ? Pulsante.Q : radioButtonT.Checked ? Pulsante.T : Pulsante.C ;
             listBox1.Items.Add(d);
 
             if (checkBox1.Checked)
