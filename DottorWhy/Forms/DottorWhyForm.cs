@@ -288,7 +288,7 @@ namespace DottorWhy.Forms
                 g.Punteggio = 0;
         }
 
-        private void button2_Click()
+        private void button2_Click(object sender, EventArgs e)
         {
             ResettaClassifica();
         }
