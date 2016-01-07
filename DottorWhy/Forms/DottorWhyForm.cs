@@ -282,16 +282,17 @@ namespace DottorWhy.Forms
                 g.attivo = Valore;
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ResettaClassifica();
+        }
+
         private void ResettaClassifica()
         {
             foreach (Giocatore g in Giocatori)
                 g.Punteggio = 0;
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            ResettaClassifica();
-        }
+  
     }  
     
    
