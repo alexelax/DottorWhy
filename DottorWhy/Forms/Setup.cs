@@ -201,10 +201,6 @@ namespace DottorWhy.Forms
                         if(UnoNonAggiunto)
                             MessageBox.Show("Attenzione!\r\nAlcuni giocatori non sono stati caricati in quanto i loro Comandi Associati sono incompatibili con quelli associati agli altri giocatori gia in lista.", "Attenzione!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                        
-
-
-
 
                     }
                 }

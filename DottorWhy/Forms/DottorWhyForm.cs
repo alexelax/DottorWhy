@@ -292,7 +292,11 @@ namespace DottorWhy.Forms
             foreach (Giocatore g in Giocatori)
                 g.Punteggio = 0;
         }
-  
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            new Option().ShowDialog();
+        }
     }  
     
    
