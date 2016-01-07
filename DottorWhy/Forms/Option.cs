@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DottorWhy.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ExtendCSharp;
+using System.Threading;
+using System.IO;
+using DottorWhy.Controlli;
+
 
 namespace DottorWhy.Forms
 {
@@ -16,5 +22,19 @@ namespace DottorWhy.Forms
         {
             InitializeComponent();
         }
+
+        public IEnumerable<Giocatore> Giocatori { get; private set; }
+
+        private void ResettaClassifica()
+        {
+            foreach (Giocatore g in Giocatori)
+                g.Punteggio = 0;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ResettaClassifica();
+        }
+
     }
-}
+ }

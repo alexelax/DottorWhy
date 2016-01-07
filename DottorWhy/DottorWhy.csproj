@@ -99,6 +99,9 @@
     <EmbeddedResource Include="Forms\EditDomande.resx">
       <DependentUpon>EditDomande.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Option.resx">
+      <DependentUpon>Option.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
