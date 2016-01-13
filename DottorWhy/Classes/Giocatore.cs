@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.Serialization;
 using DottorWhy.Controlli;
+using ExtendCSharp;
 
 namespace DottorWhy.Classes
 {
@@ -30,7 +31,7 @@ namespace DottorWhy.Classes
             {
                 _Punteggio = value;
                 if(ControlloGrafico!=null)
-                    ControlloGrafico.label_Punteggio.Text = _Punteggio + "";
+                    ControlloGrafico.label_Punteggio.SetTextInvoke(_Punteggio+"");
             }
         }
 

@@ -18,12 +18,13 @@ namespace DottorWhy.Forms
 {
     public partial class Option : Form
     {
-        public Option()
+        public Option(List<Giocatore> G)
         {
             InitializeComponent();
+            Giocatori = G;
         }
 
-        public IEnumerable<Giocatore> Giocatori { get; private set; }
+        List<Giocatore> Giocatori { get; set; }
 
         private void ResettaClassifica()
         {
