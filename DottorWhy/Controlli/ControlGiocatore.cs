@@ -11,11 +11,15 @@ using ExtendCSharp;
 using DottorWhy.Classes;
 using DottorWhy.Forms;
 using ExtendCSharp;
+using ExtendCSharp.Services;
 
 namespace DottorWhy.Controlli
 {
     public partial class ControlGiocatore : UserControl
     {
+        List<int> ComboMenuSEGRETOOOOOO = new List<int>();
+
+
         private Giocatore Parent;
         public ControlGiocatore(Giocatore Parent)
         {
@@ -24,13 +28,32 @@ namespace DottorWhy.Controlli
 
             this.GetControl(true).ForEach(c => c.MouseUp += ControlGiocatore_MouseUp);
 
+            
+            //sarebbe meglio metterlo nelle global var...
+
+            ComboMenuSEGRETOOOOOO.Add((int)Keys.LControlKey); //control left
+            ComboMenuSEGRETOOOOOO.Add(0x12); //Alt
+            ComboMenuSEGRETOOOOOO.Add((int)Keys.D);     //tasto D
         }
 
         private void ControlGiocatore_MouseUp(object sender, MouseEventArgs e)
         {
-            if(e.Button==MouseButtons.Right)
+            
+
+            if (e.Button==MouseButtons.Right)
             {
-                if(Parent!=null)
+
+                //List<int> t = new List<int>();
+                foreach (int i in ComboMenuSEGRETOOOOOO)
+                {
+                    if (KeyboardService.GetAsyncKeyState(i) >= 0)
+                        return;
+                    //t.Add(KeyboardService.GetAsyncKeyState(i));
+                }
+
+
+
+                if (Parent!=null)
                 {
                     InserisciValore iv = new InserisciValore(Parent.Punteggio + "");
       
