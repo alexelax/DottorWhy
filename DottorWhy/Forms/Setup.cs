@@ -51,9 +51,6 @@ namespace DottorWhy.Forms
             textBoxTT.KeyDownPlus += TextBoxPulsante_KeyDownPlus;
             textBoxCC.KeyDownPlus += TextBoxPulsante_KeyDownPlus;
 
-
-
-
         }
 
 

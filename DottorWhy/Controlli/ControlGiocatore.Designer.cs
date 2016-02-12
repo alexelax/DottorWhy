@@ -91,6 +91,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.label_Messaggio);
             this.Controls.Add(this.label_Pulsante);
@@ -98,6 +99,7 @@
             this.Controls.Add(this.label_nome);
             this.Name = "ControlGiocatore";
             this.Size = new System.Drawing.Size(145, 127);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ControlGiocatore_MouseUp);
             this.ResumeLayout(false);
 
         }

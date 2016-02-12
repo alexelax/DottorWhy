@@ -41,11 +41,11 @@ namespace DottorWhy.Forms
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.panelloDisegno2 = new DottorWhy.Controlli.PanelloDisegno();
             this.panelloDisegno3 = new DottorWhy.Controlli.PanelloDisegno();
             this.panelloDisegno4 = new DottorWhy.Controlli.PanelloDisegno();
             this.panelloDisegno1 = new DottorWhy.Controlli.PanelloDisegno();
-            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox_domanda
@@ -63,6 +63,7 @@ namespace DottorWhy.Forms
             this.panel_giocatori.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_giocatori.BackColor = System.Drawing.Color.Transparent;
             this.panel_giocatori.Location = new System.Drawing.Point(12, 440);
             this.panel_giocatori.Name = "panel_giocatori";
             this.panel_giocatori.Size = new System.Drawing.Size(1058, 127);
@@ -150,6 +151,16 @@ namespace DottorWhy.Forms
             this.label3.TabIndex = 9;
             this.label3.Text = "RISPOSTE";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(956, 393);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "Opzioni";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // panelloDisegno2
             // 
             this.panelloDisegno2.AspectRateo = 1;
@@ -194,16 +205,6 @@ namespace DottorWhy.Forms
             this.panelloDisegno1.Size = new System.Drawing.Size(61, 61);
             this.panelloDisegno1.TabIndex = 7;
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(956, 393);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "Opzioni";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // DottorWhyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,9 +226,7 @@ namespace DottorWhy.Forms
             this.Controls.Add(this.textBox_T);
             this.Controls.Add(this.textBox_C);
             this.Controls.Add(this.textBox_domanda);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
             this.Name = "DottorWhyForm";
             this.Text = "Dr.Why";
             this.Load += new System.EventHandler(this.Form1_Load);

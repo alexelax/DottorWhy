@@ -54,113 +54,47 @@ namespace DottorWhy.Forms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            /*
-            Dictionary<Keys, Pulsante> t = new Dictionary<Keys, Pulsante>();
-            t.Add(Keys.NumPad0, Pulsante.X);
-            t.Add(Keys.NumPad1, Pulsante.Q);
-            t.Add(Keys.NumPad2, Pulsante.T);
-            t.Add(Keys.NumPad3, Pulsante.C);
-            Giocatori.Add(new Giocatore("Giocatore 1",t));
-
-
-            t = new Dictionary<Keys, Pulsante>();
-            t.Add(Keys.NumPad4, Pulsante.X);
-            t.Add(Keys.NumPad5, Pulsante.Q);
-            t.Add(Keys.NumPad6, Pulsante.T);
-            t.Add(Keys.NumPad7, Pulsante.C);
-            Giocatori.Add(new Giocatore("Giocatore 2", t));
-
-
-            t = new Dictionary<Keys, Pulsante>();
-            t.Add(Keys.A, Pulsante.X);
-            t.Add(Keys.B, Pulsante.Q);
-            t.Add(Keys.C, Pulsante.T);
-            t.Add(Keys.D, Pulsante.C);
-            Giocatori.Add(new Giocatore("Giocatore 3", t));
-
-
-            t = new Dictionary<Keys, Pulsante>();
-            t.Add(Keys.E, Pulsante.X);
-            t.Add(Keys.F, Pulsante.Q);
-            t.Add(Keys.G, Pulsante.T);
-            t.Add(Keys.H, Pulsante.C);
-            Giocatori.Add(new Giocatore("Giocatore 4", t));
-
-            t = new Dictionary<Keys, Pulsante>();
-            t.Add(Keys.I, Pulsante.X);
-            t.Add(Keys.J, Pulsante.Q);
-            t.Add(Keys.K, Pulsante.T);
-            t.Add(Keys.L, Pulsante.C);
-            Giocatori.Add(new Giocatore("Giocatore 5", t));
-
-
-            t = new Dictionary<Keys, Pulsante>();
-            t.Add(Keys.M, Pulsante.X);
-            t.Add(Keys.N, Pulsante.Q);
-            t.Add(Keys.O, Pulsante.T);
-            t.Add(Keys.P, Pulsante.C);
-            Giocatori.Add(new Giocatore("Giocatore 6", t));
-
-
-            t = new Dictionary<Keys, Pulsante>();
-            t.Add(Keys.Q, Pulsante.X);
-            t.Add(Keys.R, Pulsante.Q);
-            t.Add(Keys.S, Pulsante.T);
-            t.Add(Keys.T, Pulsante.C);
-            Giocatori.Add(new Giocatore("Giocatore 7", t));
-
-            */
+  
 
 
             int r = 0,c=0;
+            int widthMax = 0, widthCurrent=0, Height = 0;
+
             foreach (Giocatore g in Giocatori)
             {
-                g.ControlloGrafico = new ControlGiocatore();
-                g.ControlloGrafico.Location = new Point(c++ * g.ControlloGrafico.Width, r * g.ControlloGrafico.Height);
+                g.ControlloGrafico = new ControlGiocatore(g);
+                g.ControlloGrafico.Location = new Point(widthCurrent, r * g.ControlloGrafico.Height);
+                widthCurrent += g.ControlloGrafico.Width;
                 panel_giocatori.Controls.Add(g.ControlloGrafico);
 
+                c++;
+                if(Height==0)
+                    Height = g.ControlloGrafico.Height;
                 if (c >= MaxColonne)
                 {
                     c = 0;
                     r++;
+                    
+
+                    if (widthCurrent > widthMax)
+                        widthMax = widthCurrent;
+                    widthCurrent = 0;
                 }
             }
+            if (widthCurrent > widthMax)
+                widthMax = widthCurrent;
+
+             panel_giocatori.Width=widthMax;
+            panel_giocatori.Height= (r+1)*Height;
+
+
+
             PulisciGraficaGiocatori();
 
 
             foreach (Control cc in this.GetControl(true))
                 cc.KeyDown += KeyDownEvent;
 
-
-
-
-
-            /*Domanda d = new Domanda();
-            d.Testo = "sei frocio?";
-            Dictionary<Pulsante, String> dd = new Dictionary<Pulsante, string>();
-            dd.Add(Pulsante.X, "Si");
-            dd.Add(Pulsante.T, "Assolutamente SI");
-            dd.Add(Pulsante.Q, "Come vazz (quindi si)");
-            dd.Add(Pulsante.C, "Come Lu (quindi lecca la figa a manetta)");
-            d.ListaRisp = dd;
-            d.risposta = Pulsante.Q;
-
-            Domande.Add(d);
-            Domande.Add(d);
-            DomandaCorrente = d;*/
-
-            /* foreach (String s in File.ReadLines("Domande.txt"))
-             {
-                 Domande.Add(Json.Deserialize<Domanda>(s));
-             }*/
-
-            /*using (FileStream s = File.OpenWrite("Domande1.txt"))
-            {
-                using (StreamWriter sw = new StreamWriter(s))
-                {
-                    sw.WriteLine(Json.Serialize(Domande));
-                }
-            }*/
 
             if (!File.Exists("Domande.txt"))
             {
@@ -174,6 +108,8 @@ namespace DottorWhy.Forms
 
             
         }
+
+
         private void KeyDownEvent(object sender, KeyEventArgs e)
         {
             e.Handled = true;
