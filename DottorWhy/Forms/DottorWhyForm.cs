@@ -219,11 +219,19 @@ namespace DottorWhy.Forms
                 g.attivo = Valore;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            new Option(Giocatori).ShowDialog();
+            ResettaClassifica();
         }
-        
+
+        private void ResettaClassifica()
+        {
+            foreach (Giocatore g in Giocatori)
+                g.Punteggio = 0;
+        }
+
+       
+
     }  
     
    
