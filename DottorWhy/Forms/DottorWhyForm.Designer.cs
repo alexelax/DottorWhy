@@ -46,6 +46,7 @@ namespace DottorWhy.Forms
             this.panelloDisegno3 = new DottorWhy.Controlli.PanelloDisegno();
             this.panelloDisegno4 = new DottorWhy.Controlli.PanelloDisegno();
             this.panelloDisegno1 = new DottorWhy.Controlli.PanelloDisegno();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox_domanda
@@ -205,12 +206,23 @@ namespace DottorWhy.Forms
             this.panelloDisegno1.Size = new System.Drawing.Size(61, 61);
             this.panelloDisegno1.TabIndex = 7;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(934, 323);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(108, 46);
+            this.button3.TabIndex = 13;
+            this.button3.Text = "GOOO !!!!";
+            this.button3.UseVisualStyleBackColor = true;
+           // this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // DottorWhyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1082, 629);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -254,6 +266,7 @@ namespace DottorWhy.Forms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 

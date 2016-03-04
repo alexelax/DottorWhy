@@ -55,8 +55,6 @@ namespace DottorWhy.Forms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-  
-
 
             int r = 0,c=0;
             int widthMax = 0, widthCurrent=0, Height = 0;
@@ -105,8 +103,6 @@ namespace DottorWhy.Forms
             }
             else
                 Domande = Json.Deserialize<List<Domanda>>(File.ReadAllText("Domande.txt"));
-
-
             
         }
 
@@ -135,6 +131,7 @@ namespace DottorWhy.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             panel_giocatori.SetVisibleInvoke(false);
+
             if (ContoAllaRovescia == null)
             {
                 ContoAllaRovescia = new CountDown(new TimeSpanPlus(0, 10));
@@ -162,7 +159,7 @@ namespace DottorWhy.Forms
                 };
 
             }
-            else
+            else 
                 ContoAllaRovescia.SetTime(new TimeSpanPlus(0, 10));
 
 
@@ -170,7 +167,7 @@ namespace DottorWhy.Forms
             if (CambiaDomanda())
                 ContoAllaRovescia.Start();
             else
-                label1.SetTextInvoke("ERRORE NEL RECUPERO DELLE DOMANDE!");
+                label1.SetTextInvoke("ERRORE !");
 
         }
 
@@ -230,8 +227,12 @@ namespace DottorWhy.Forms
                 g.Punteggio = 0;
         }
 
-       
+        bool cont = false;
 
+       /* private void button3_Click(object sender, EventArgs e)
+        {
+            cont = true;
+        }*/
     }  
     
    
