@@ -38,17 +38,12 @@ namespace DottorWhy.Controlli
 
         private void ControlGiocatore_MouseUp(object sender, MouseEventArgs e)
         {
-            
-
             if (e.Button==MouseButtons.Right)
             {
-
-                //List<int> t = new List<int>();
                 foreach (int i in ComboMenuSEGRETOOOOOO)
                 {
-                    if (KeyboardService.GetAsyncKeyState(i) >= 0)
+                    if (KeyboardService.GetKeyState(i).KeyStat ==MyKeyboardEvent.KeyStatus.None || KeyboardService.GetKeyState(i).KeyStat == MyKeyboardEvent.KeyStatus.Up)
                         return;
-                    //t.Add(KeyboardService.GetAsyncKeyState(i));
                 }
 
 
@@ -66,10 +61,6 @@ namespace DottorWhy.Controlli
                         else
                             Parent.Punteggio = 0;
                     }
-                   
-                   
-
-
                 }
             }
         }

@@ -123,7 +123,7 @@ namespace DottorWhy.Forms
             // button3
             // 
             this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.Font = new System.Drawing.Font("Ninja Naruto", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.Red;
             this.button3.Location = new System.Drawing.Point(37, 280);
             this.button3.Name = "button3";
@@ -163,11 +163,12 @@ namespace DottorWhy.Forms
             // 
             // saveFileDialog1
             // 
+            this.saveFileDialog1.FileName = "Players";
             this.saveFileDialog1.Filter = "File salvataggio Giocatori | *.gdw";
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "File salvataggio Giocatori | *.gdw";
             // 
             // button4
             // 

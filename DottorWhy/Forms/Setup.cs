@@ -170,6 +170,7 @@ namespace DottorWhy.Forms
         private void button_inport_Click(object sender, EventArgs e)
         {
             openFileDialog1.Title = "Apri una lista di giocatori";
+
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 using (FileStream s = (FileStream)openFileDialog1.OpenFile())

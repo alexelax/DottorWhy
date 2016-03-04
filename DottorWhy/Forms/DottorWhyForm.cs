@@ -29,12 +29,15 @@ namespace DottorWhy.Forms
                 _DomandaCorrente = value;
                 textBox_domanda.Text = _DomandaCorrente.Testo;
 
-                textBox_X.Text = _DomandaCorrente.ListaRisp[Pulsante.X];
-                textBox_Q.Text = _DomandaCorrente.ListaRisp[Pulsante.Q];
-                textBox_T.Text = _DomandaCorrente.ListaRisp[Pulsante.T];
-                textBox_C.Text = _DomandaCorrente.ListaRisp[Pulsante.C];
+                //textBox_X.Text = _DomandaCorrente.ListaRisp[Pulsante.X];
+                //textBox_Q.Text = _DomandaCorrente.ListaRisp[Pulsante.Q];
+                //textBox_T.Text = _DomandaCorrente.ListaRisp[Pulsante.T];
+                //textBox_C.Text = _DomandaCorrente.ListaRisp[Pulsante.C];
+                textBox_X.Text = "";
+                textBox_Q.Text = "";
+                textBox_T.Text = "";
+                textBox_C.Text = "";
 
-                SettaGiocatoriAttivi(true);
                 PulisciGraficaGiocatori();
             }
         }
@@ -131,44 +134,8 @@ namespace DottorWhy.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             panel_giocatori.SetVisibleInvoke(false);
-
-            if (ContoAllaRovescia == null)
-            {
-                ContoAllaRovescia = new CountDown(new TimeSpanPlus(0, 10));
-                ContoAllaRovescia.Tick += (CountDown cd) =>
-                {
-                    label1.SetTextInvoke(cd.ToString("ss"));
-                };
-                ContoAllaRovescia.Started += (CountDown cd) =>
-                {
-                    label1.SetTextInvoke(cd.ToString("ss"));
-                };
-
-                ContoAllaRovescia.Stopped += (CountDown cd, StopStatus s) =>
-                {
-                    if (s == StopStatus.End)
-                    {
-                        label1.SetTextInvoke("STOP");
-                        panel_giocatori.SetVisibleInvoke(true);
-                    }
-                    else
-                    {
-                        label1.SetTextInvoke("INTERROTTO");
-                    }
-                    SettaGiocatoriAttivi(false);
-                };
-
-            }
-            else 
-                ContoAllaRovescia.SetTime(new TimeSpanPlus(0, 10));
-
-
-
-            if (CambiaDomanda())
-                ContoAllaRovescia.Start();
-            else
-                label1.SetTextInvoke("ERRORE !");
-
+            if (!CambiaDomanda())
+                label1.SetTextInvoke("ERRORE !"); 
         }
 
         private static Giocatore GetGiocatore(Giocatore Giocatore)
@@ -185,6 +152,13 @@ namespace DottorWhy.Forms
                 i = 0;
             DomandaCorrente = Domande[i++];
             return true;
+        }
+        private void ShowRisposte()
+        {
+            textBox_X.Text = DomandaCorrente.ListaRisp[Pulsante.X];
+            textBox_Q.Text = DomandaCorrente.ListaRisp[Pulsante.Q];
+            textBox_T.Text = DomandaCorrente.ListaRisp[Pulsante.T];
+            textBox_C.Text = DomandaCorrente.ListaRisp[Pulsante.C];
         }
 
         private void Clicca(Giocatore Giocatore, Pulsante premuto)
@@ -229,10 +203,58 @@ namespace DottorWhy.Forms
 
         bool cont = false;
 
-       /* private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-            cont = true;
-        }*/
+
+            if (ContoAllaRovescia == null)
+            {
+                ContoAllaRovescia = new CountDown(new TimeSpanPlus(0, 10));
+                ContoAllaRovescia.Tick += (CountDown cd) =>
+                {
+                    label1.SetTextInvoke(cd.ToString("ss"));
+                };
+                ContoAllaRovescia.Started += (CountDown cd) =>
+                {
+                    label1.SetTextInvoke(cd.ToString("ss"));
+                    button3.SetEnableInvoke(false);
+                    button1.SetEnableInvoke(false);
+                };
+
+                ContoAllaRovescia.Stopped += (CountDown cd, StopStatus s) =>
+                {
+                    button3.SetEnableInvoke(true);
+                    button1.SetEnableInvoke(true);
+                    if (s == StopStatus.End)
+                    {
+                        label1.SetTextInvoke("STOP");
+                        panel_giocatori.SetVisibleInvoke(true);
+                    }
+                    else
+                    {
+                        label1.SetTextInvoke("INTERROTTO");
+                    }
+                    SettaGiocatoriAttivi(false);
+                };
+
+            }
+            else
+            {
+                if(!ContoAllaRovescia.Running)
+                    ContoAllaRovescia.SetTime(new TimeSpanPlus(0, 10));
+            }
+
+
+
+            SettaGiocatoriAttivi(true);
+            ShowRisposte();
+            ContoAllaRovescia.Start();
+           
+        }
+
+        /* private void button3_Click(object sender, EventArgs e)
+         {
+             cont = true;
+         }*/
     }  
     
    
