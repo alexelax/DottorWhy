@@ -201,10 +201,16 @@ namespace DottorWhy.Forms
                 g.Punteggio = 0;
         }
 
-        bool cont = false;
 
         private void button3_Click(object sender, EventArgs e)
         {
+            while (textBox_domanda.Text.Length <= 0)
+            {  
+                    MessageBox.Show("Devi prima caricare una domanda!", "Attenzione!", MessageBoxButtons.OK);
+                return;
+            }
+
+            
 
             if (ContoAllaRovescia == null)
             {
@@ -251,10 +257,6 @@ namespace DottorWhy.Forms
            
         }
 
-        /* private void button3_Click(object sender, EventArgs e)
-         {
-             cont = true;
-         }*/
     }  
     
    
