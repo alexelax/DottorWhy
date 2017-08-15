@@ -12,6 +12,7 @@ using System.Threading;
 using System.IO;
 using DottorWhy.Classes;
 using ExtendCSharp.Services;
+using ExtendCSharp.Controls;
 
 namespace DottorWhy.Forms
 {
@@ -29,7 +30,7 @@ namespace DottorWhy.Forms
         }
         private void Setup_Load(object sender, EventArgs e)
         {
-            foreach (Control c in this.GetControl(true))
+            foreach (Control c in this.GetSubControls(true))
             {
                 c.KeyDown += (object s, KeyEventArgs ee) =>
                 {

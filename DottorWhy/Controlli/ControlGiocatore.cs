@@ -26,7 +26,7 @@ namespace DottorWhy.Controlli
             InitializeComponent();
             this.Parent = Parent;
 
-            this.GetControl(true).ForEach(c => c.MouseUp += ControlGiocatore_MouseUp);
+            this.GetSubControls(true).ForEach(c => c.MouseUp += ControlGiocatore_MouseUp);
 
             
             //sarebbe meglio metterlo nelle global var...

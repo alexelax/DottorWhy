@@ -12,6 +12,7 @@ using System.IO;
 using DottorWhy.Classes;
 using DottorWhy.Controlli;
 using ExtendCSharp.Services;
+using ExtendCSharp.Controls;
 
 namespace DottorWhy.Forms
 {
@@ -94,7 +95,7 @@ namespace DottorWhy.Forms
             PulisciGraficaGiocatori();
 
 
-            foreach (Control cc in this.GetControl(true))
+            foreach (Control cc in this.GetSubControls(true))
                 cc.KeyDown += KeyDownEvent;
 
 
